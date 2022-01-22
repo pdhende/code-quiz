@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 5px;
+}
+
+h3 {
+    display:inline-block;
+}
+
+.timer {
+    float: right;
+    margin-right: 25px;
+}
