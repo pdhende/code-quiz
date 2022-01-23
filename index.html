@@ -11,16 +11,19 @@
         <header>
             <h3><a href = "highscores.html">View Highscores</a></h3>
             <div class = "time"><h4>Time: </h4><p class = "timer-value">0</p></div>
-            <!-- <p class = "timer">Time : 25</p> -->
         </header>
 
         <main>
-            <h2>Coding Quiz Challenge</h2>
+            <h2 class = "display-main-page" data-state="show">Coding Quiz Challenge</h2>
             <section class = "display-section">
-                <div class = "display-mcq">
+                <div class = "display-main-page" data-state="show">
                     <p>Try to answer the following questions within the time limit. Keep in mind that incorrect answers will penalize your time by ten seconds!</p>
                 </div>
-                <div class = "display-buttons">
+                <div class = "display-question" data-state="hidden">
+                    <h2 data-type="question" id="question"></h2>
+                    <ol data-type="answers" data-state="show" id="answers"></ol>
+                </div>
+                <div class = "display-buttons display-main-page" data-state="show">
                     <button id="start" name="start" value="Start Quiz">Start Quiz</button>
                 </div>
             </section>

@@ -40,12 +40,12 @@ button {
     justify-content: center;
 }
 
-.display-mcq,
+.display-main-page,
 .display-buttons {
     display : flex;
     justify-content: center;
 } 
 
-.display-mcq {
+.display-main-page {
     margin: 0, 25%;
 }
