@@ -58,6 +58,11 @@ button {
     color: white;
 }
 
+.p-result {
+    font-style: italic;
+    color:darkblue;
+}
+
 #answers {
     display: contents;
 }

@@ -7,6 +7,7 @@ var questionEl = document.querySelector("#question");
 var answerListEl = document.querySelector("#answers");
 var intervalID;
 var questionNum = 0;
+var ansType = "";
 
 // Create an array of objects containing questions and answers
 var questionSet = [
@@ -46,10 +47,10 @@ var questionSet = [
         question: "Inside which HTML element do we put the JavaScript?",
         answer: [{
             choice: "1. <javascript>",
-            type: "correct"
+            type: "wrong"
             }, {
             choice: "2. <script>",
-            type: "wrong"
+            type: "correct"
             }, {
             choice: "3. <scripting>",
             type: "wrong" 
@@ -95,21 +96,34 @@ function displayQuestions() {
         ansListItem = document.createElement('button');
         ansListItem.classList.add('list-item-bttns');
         ansListItem.textContent = ans.choice;
+        ansListItem.setAttribute("data-choice-type", ans.type);
         answerListEl.appendChild(ansListItem);
-        ansListItem.addEventListener('click', displayNextQ);
+        ansListItem.addEventListener('click', displayResult);
     })
 }
 
-// Function to track score and display next question
-function displayNextQ() {
-    questionNum++;
-    if(questionNum < questionSet.length) {
-        answerListEl.innerHTML='';
-        displayQuestions();
-    }
-    else {
-        questionEl.innerHTML='';
+// Function to display result based on answer selected and display next question
+function displayResult() {
+    var ansChoiceType = this.getAttribute("data-choice-type");
+    var showResult = document.createElement('p');
+    showResult.classList.add("p-result");
+    showResult.textContent = ansChoiceType + "!";
+    quesAnsEl.appendChild(showResult);
+
+    setTimeout(clearQuestions, 1000);
+
+    function clearQuestions() {
         answerListEl.innerHTML='';        
+        showResult.innerHTML='';
+        questionNum++;
+        if(questionNum < questionSet.length) {
+            displayQuestions();
+        }
+        else {
+            questionEl.innerHTML='';
+            answerListEl.innerHTML='';        
+            showResult.innerHTML='';
+        }
     }
 }
 
