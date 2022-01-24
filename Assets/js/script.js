@@ -12,48 +12,48 @@ var questionSet = [
     {
         question: "Which data type is NOT supported by JavaScript?",
         answer: [{
-            choice: "Boolean",
+            choice: "1. Boolean",
             type: "wrong"
             }, {
-            choice: "String",
+            choice: "2. String",
             type: "wrong"
             }, {
-            choice: "Console",
+            choice: "3. Console",
             type: "correct" 
             }, {
-            choice: "Number",
+            choice: "4. Number",
             type: "wrong"
             }]
     }, 
     {
         question: "In JavaScript, what element is used to store multiple values in a single variable?",
         answer: [{
-            choice: "Arrays",
+            choice: "1. Arrays",
             type: "correct"
             }, {
-            choice: "Functions",
+            choice: "2. Functions",
             type: "wrong"
             }, {
-            choice: "Variables",
+            choice: "3. Variables",
             type: "wrong" 
             }, {
-            choice: "Strings",
+            choice: "4. Strings",
             type: "wrong"
         }]
     },
     {
         question: "Inside which HTML element do we put the JavaScript?",
         answer: [{
-            choice: "<javascript>",
+            choice: "1. <javascript>",
             type: "correct"
             }, {
-            choice: "<script>",
+            choice: "2. <script>",
             type: "wrong"
             }, {
-            choice: "<scripting>",
+            choice: "3. <scripting>",
             type: "wrong" 
             }, {
-            choice: "<js>",
+            choice: "4. <js>",
             type: "wrong"
         }]
     }];
@@ -85,17 +85,28 @@ function hideMainPage() {
     displayQuestions();
 }
 
-// Show the questions one by one
+// Function to show the questions one by one
 function displayQuestions() {
+    var ansListItem;
     questionEl.textContent = questionSet[questionNum].question;
     var answers = questionSet[questionNum].answer;
     answers.forEach(function(ans){
-        var ansListItem = document.createElement('li');
+        ansListItem = document.createElement('button');
+        ansListItem.classList.add('list-item-bttns');
         ansListItem.textContent = ans.choice;
         answerListEl.appendChild(ansListItem);
+        ansListItem.addEventListener('click', showChoiceType);
     })
+}
+
+// Function to track score and display next question
+function showChoiceType() {
+    questionNum++;
+    answerListEl.innerHTML='';
+    displayQuestions();
 }
 
 // Event listeners
 startQuiz.addEventListener("click", setTimer);
 startQuiz.addEventListener("click", hideMainPage);
+// ansListItem.addEventListener('click', showChoiceType);

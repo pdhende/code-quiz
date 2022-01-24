@@ -52,3 +52,12 @@ button {
 .display-question {
     margin: 0 25%;
 }
+
+.list-item-bttns {
+    background-color:slategray;
+    color: white;
+}
+
+#answers {
+    display: contents;
+}
