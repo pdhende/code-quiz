@@ -34,18 +34,21 @@ button {
     margin-right: 25px;
 }
 
-.display-section {
+.display-section,
+.display-question {
     display : flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .display-main-page,
-.display-buttons {
+.display-buttons
+{
     display : flex;
     justify-content: center;
 } 
 
-.display-main-page {
-    margin: 0, 25%;
+.display-main-page,
+.display-question {
+    margin: 0 25%;
 }
