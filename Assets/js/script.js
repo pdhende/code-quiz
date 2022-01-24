@@ -5,6 +5,7 @@ var pElement = document.querySelectorAll(".display-main-page");
 var quesAnsEl = document.querySelector(".display-question");
 var questionEl = document.querySelector("#question");
 var answerListEl = document.querySelector("#answers");
+var timerCount;
 var intervalID;
 var questionNum = 0;
 var ansType = "";
@@ -62,7 +63,7 @@ var questionSet = [
 
 // Function to set the timer
 function setTimer() {
-    var timerCount = 75;
+    timerCount = 75;
     function setTime() {
         timerCount--;
         timeValue.textContent = timerCount;
@@ -110,9 +111,10 @@ function displayResult() {
     showResult.textContent = ansChoiceType + "!";
     quesAnsEl.appendChild(showResult);
 
-    setTimeout(clearQuestions, 1000);
+    setTimeout(clearQuestions, 750);
 
     function clearQuestions() {
+        timerCount = timerCount - 10;
         answerListEl.innerHTML='';        
         showResult.innerHTML='';
         questionNum++;
