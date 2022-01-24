@@ -2,6 +2,7 @@
 var startQuiz = document.querySelector("#start");
 var timeValue = document.querySelector(".timer-value");
 var pElement = document.querySelectorAll(".display-main-page");
+var quesAnsEl = document.querySelector(".display-question");
 var questionEl = document.querySelector("#question");
 var answerListEl = document.querySelector("#answers");
 var intervalID;
@@ -95,18 +96,23 @@ function displayQuestions() {
         ansListItem.classList.add('list-item-bttns');
         ansListItem.textContent = ans.choice;
         answerListEl.appendChild(ansListItem);
-        ansListItem.addEventListener('click', showChoiceType);
+        ansListItem.addEventListener('click', displayNextQ);
     })
 }
 
 // Function to track score and display next question
-function showChoiceType() {
+function displayNextQ() {
     questionNum++;
-    answerListEl.innerHTML='';
-    displayQuestions();
+    if(questionNum < questionSet.length) {
+        answerListEl.innerHTML='';
+        displayQuestions();
+    }
+    else {
+        questionEl.innerHTML='';
+        answerListEl.innerHTML='';        
+    }
 }
 
 // Event listeners
 startQuiz.addEventListener("click", setTimer);
 startQuiz.addEventListener("click", hideMainPage);
-// ansListItem.addEventListener('click', showChoiceType);
