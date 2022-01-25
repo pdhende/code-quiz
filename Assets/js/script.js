@@ -7,8 +7,10 @@ var questionEl = document.querySelector("#question");
 var answerListEl = document.querySelector("#answers");
 var timerCount;
 var intervalID;
+var showResult;
 var questionNum = 0;
 var ansType = "";
+var score = 0;
 
 // Create an array of objects containing questions and answers
 var questionSet = [
@@ -63,13 +65,14 @@ var questionSet = [
 
 // Function to set the timer
 function setTimer() {
-    timerCount = 75;
+    timerCount = 30;
     function setTime() {
         timerCount--;
         timeValue.textContent = timerCount;
 
-        if(timerCount == 0) {
+        if(timerCount <= 0) {
             clearInterval(intervalID);
+            displayFinalResult();
         }
     }
     intervalID = setInterval(setTime, 1000);
@@ -106,7 +109,7 @@ function displayQuestions() {
 // Function to display result based on answer selected and display next question
 function displayResult() {
     var ansChoiceType = this.getAttribute("data-choice-type");
-    var showResult = document.createElement('p');
+    showResult = document.createElement('p');
     showResult.classList.add("p-result");
     showResult.textContent = ansChoiceType + "!";
     quesAnsEl.appendChild(showResult);
@@ -114,7 +117,17 @@ function displayResult() {
     setTimeout(clearQuestions, 750);
 
     function clearQuestions() {
-        timerCount = timerCount - 10;
+        if(ansChoiceType === "correct") {
+            score = score + 2;
+        }
+        else if((ansChoiceType === "wrong") && (timerCount >= 10)) {
+            timerCount = timerCount - 10;
+        }
+        else {
+            clearInterval(intervalID);
+            timerCount = 0;
+            timeValue.textContent = timerCount;
+        }
         answerListEl.innerHTML='';        
         showResult.innerHTML='';
         questionNum++;
@@ -122,12 +135,31 @@ function displayResult() {
             displayQuestions();
         }
         else {
-            questionEl.innerHTML='';
-            answerListEl.innerHTML='';        
-            showResult.innerHTML='';
+            displayFinalResult();
         }
     }
 }
+
+// Function to display final page displaying score
+    function displayFinalResult() {
+        clearInterval(intervalID);
+        timerCount = 0;
+        timeValue.textContent = timerCount;
+        questionEl.innerHTML='';
+        answerListEl.innerHTML='';        
+        showResult.innerHTML='';
+
+        var hTag = document.createElement('h3');
+        hTag.classList.add("h3-result-page");
+        hTag.textContent = "All done!";
+        var pTag = document.createElement('p');
+        pTag.textContent = "Your final score is : "+ score;
+        quesAnsEl.appendChild(hTag);
+        quesAnsEl.appendChild(pTag);
+        // var formEl = document.createElement('form');
+        // var inputEl = document.createElement('label');
+
+    }
 
 // Event listeners
 startQuiz.addEventListener("click", setTimer);
