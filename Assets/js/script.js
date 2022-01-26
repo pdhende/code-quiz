@@ -6,6 +6,8 @@ var quesAnsEl = document.querySelector(".display-question");
 var questionEl = document.querySelector("#question");
 var answerListEl = document.querySelector("#answers");
 var formEl = document.querySelector("#final-form");
+
+// Declare and initialize variables
 var timerCount;
 var intervalID;
 var showResult;

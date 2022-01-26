@@ -68,6 +68,13 @@ button {
     margin: 25px 0;
 }
 
+.player-list {
+    background-color:lightsteelblue;
+    margin: 0;
+    padding: 5px;
+    width: 50%;
+}
+
 #answers {
     display: contents;
 }
@@ -75,3 +82,9 @@ button {
 #final-form {
     margin: 0;
 }
+
+#qPlayer-list {
+    margin-left: 40%;
+    list-style-type: none;
+}
+
