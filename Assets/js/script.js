@@ -64,11 +64,59 @@ var questionSet = [
             choice: "4. <js>",
             type: "wrong"
         }]
+    },
+    {
+        question: "The condition in an if/else statement is enclosed within?",
+        answer: [{
+            choice: "1. quotes",
+            type: "wrong"
+            }, {
+            choice: "2. parentheses",
+            type: "correct"
+            }, {
+            choice: "3. curly brackets",
+            type: "wrong" 
+            }, {
+            choice: "4. square brackets",
+            type: "wrong"
+        }]
+    },
+    {
+        question: "When string values are assigned to variables they should be enclosed within?",
+        answer: [{
+            choice: "1. commas",
+            type: "wrong"
+            }, {
+            choice: "2. parentheses",
+            type: "wrong"
+            }, {
+            choice: "3. quotes",
+            type: "correct" 
+            }, {
+            choice: "4. curly brackets",
+            type: "wrong"
+        }]
+    },
+    {
+        question: "A very useful tool used during development and debugging for printing content to the debugger is?",
+        answer: [{
+            choice: "1. javascript",
+            type: "wrong"
+            }, {
+            choice: "2. terminal/bash",
+            type: "wrong"
+            }, {
+            choice: "3. for loops",
+            type: "wrong" 
+            }, {
+            choice: "4. console.log",
+            type: "correct"
+        }]
     }];
 
 // Function to set the timer
 function setTimer() {
-    timerCount = 30;
+    timerCount = 75;
     function setTime() {
         timerCount--;
         timeValue.textContent = timerCount;
