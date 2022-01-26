@@ -183,27 +183,23 @@ function displayFinalResult() {
     });
 
     function saveScore() {
-        // var prevQuizScArr = []; //Array variable to store previous quiz score
-        var quizScore = JSON.parse(localStorage.getItem("quizScArr")); // Get previous score from local storage
-        // var newQuizSc; // Variable to store new quiz details
+        var quizScore = JSON.parse(sessionStorage.getItem("quizScArr")); // Get previous score from local storage
 
         if(quizScore === null) {
             var newQuizSc = [{
                 qName: inputEl.value,
                 qScore: score
             }];
-            localStorage.setItem("quizScArr", JSON.stringify(newQuizSc));
+            sessionStorage.setItem("quizScArr", JSON.stringify(newQuizSc));
         }
         else {
-            // prevQuizScArr = quizScore;
-            var prevQuizScArr = JSON.parse(localStorage.getItem("quizScArr")) || [];
-            // console.log("typeOf prevQuizArr " +prevQuizScArr);
+            var prevQuizScArr = JSON.parse(sessionStorage.getItem("quizScArr")) || [];
             var newQuizSc = {
                 qName: inputEl.value,
                 qScore: score
             };
             prevQuizScArr.push(newQuizSc);
-            localStorage.setItem("quizScArr", JSON.stringify(prevQuizScArr));
+            sessionStorage.setItem("quizScArr", JSON.stringify(prevQuizScArr));
         }
             window.location.href="highscores.html";
     }
