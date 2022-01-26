@@ -188,16 +188,16 @@ function displayFinalResult() {
         // var newQuizSc; // Variable to store new quiz details
 
         if(quizScore === null) {
-            var newQuizSc = {
+            var newQuizSc = [{
                 qName: inputEl.value,
                 qScore: score
-            };
+            }];
             localStorage.setItem("quizScArr", JSON.stringify(newQuizSc));
         }
         else {
             // prevQuizScArr = quizScore;
             var prevQuizScArr = JSON.parse(localStorage.getItem("quizScArr")) || [];
-            console.log("typeOf prevQuizArr " +prevQuizScArr);
+            // console.log("typeOf prevQuizArr " +prevQuizScArr);
             var newQuizSc = {
                 qName: inputEl.value,
                 qScore: score

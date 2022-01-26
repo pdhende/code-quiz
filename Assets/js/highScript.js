@@ -2,14 +2,19 @@
 var quizPlayer = document.querySelector("#qPlayer-list");
 var goBackBtn = document.querySelector("#back");
 var clearBtn = document.querySelector("#clear");
+var index = 0;
 
 // Get the player score from local storage
 var quizSc = JSON.parse(localStorage.getItem("quizScArr"));
 if(quizSc !== null) {
-    var listEl = document.createElement('li');
-    listEl.classList.add("player-list");
-    listEl.textContent = "1. " + quizSc.qName + " - " + quizSc.qScore;
-    quizPlayer.appendChild(listEl);
+    
+    quizSc.forEach(function(obj) {
+        index++;
+        var listEl = document.createElement('li');
+        listEl.classList.add("player-list");
+        listEl.textContent = index + ". " + obj.qName + " - " + obj.qScore;
+        quizPlayer.appendChild(listEl);
+        });
 }
 
 // Function to navigate to quiz home page

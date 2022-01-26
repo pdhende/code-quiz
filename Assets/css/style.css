@@ -28,6 +28,10 @@ button {
     width: 150px;
 }
 
+button:hover {
+    background-color : #7f8a94; 
+}
+
 .time {
     display: flex;
     float: right;
@@ -70,7 +74,6 @@ button {
 
 .player-list {
     background-color:lightsteelblue;
-    margin: 0;
     padding: 5px;
     width: 50%;
 }
