@@ -71,3 +71,7 @@ button {
 #answers {
     display: contents;
 }
+
+#final-form {
+    margin: 0;
+}

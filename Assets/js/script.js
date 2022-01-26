@@ -5,6 +5,7 @@ var pElement = document.querySelectorAll(".display-main-page");
 var quesAnsEl = document.querySelector(".display-question");
 var questionEl = document.querySelector("#question");
 var answerListEl = document.querySelector("#answers");
+var formEl = document.querySelector("#final-form");
 var timerCount;
 var intervalID;
 var showResult;
@@ -141,25 +142,53 @@ function displayResult() {
 }
 
 // Function to display final page displaying score
-    function displayFinalResult() {
-        clearInterval(intervalID);
-        timerCount = 0;
-        timeValue.textContent = timerCount;
-        questionEl.innerHTML='';
-        answerListEl.innerHTML='';        
-        showResult.innerHTML='';
+function displayFinalResult() {
+    clearInterval(intervalID);
+    timerCount = 0;
+    timeValue.textContent = timerCount;
+    questionEl.innerHTML='';
+    answerListEl.innerHTML='';        
+    showResult.innerHTML='';
 
-        var hTag = document.createElement('h3');
-        hTag.classList.add("h3-result-page");
-        hTag.textContent = "All done!";
-        var pTag = document.createElement('p');
-        pTag.textContent = "Your final score is : "+ score;
-        quesAnsEl.appendChild(hTag);
-        quesAnsEl.appendChild(pTag);
-        // var formEl = document.createElement('form');
-        // var inputEl = document.createElement('label');
+    var hTag = document.createElement('h3');
+    hTag.classList.add("h3-result-page");
+    hTag.textContent = "All done!";
+    var pTag = document.createElement('p');
+    pTag.textContent = "Your final score is : "+ score;
+    quesAnsEl.appendChild(hTag);
+    quesAnsEl.appendChild(pTag);
+    var formMainEl = document.createElement('form');
+    formMainEl.setAttribute("action", "")
+    formMainEl.setAttribute("method", "post");
+    formEl.appendChild(formMainEl);
+    var labelEl = document.createElement('label');
+    labelEl.textContent = "Enter initials :"
+    var inputEl = document.createElement('input');
+    inputEl.type = "text"; 
+    inputEl.value = "";
+    inputEl.width = "50px";
+    var submitBtn = document.createElement('button');
+    submitBtn.textContent = "Submit";
 
+    quesAnsEl.appendChild(formEl);
+    formMainEl.appendChild(labelEl);
+    formMainEl.appendChild(inputEl);
+    formMainEl.appendChild(submitBtn);
+
+    submitBtn.addEventListener('click', function(event) {
+        event.preventDefault();
+        saveScore();
+    });
+
+    function saveScore() {
+        var quizScore = {
+            qName: inputEl.value,
+            qScore: score
+          };
+          localStorage.setItem("quizScore", JSON.stringify(quizScore));
+          window.location.href="highscores.html";
     }
+}
 
 // Event listeners
 startQuiz.addEventListener("click", setTimer);
