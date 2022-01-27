@@ -60,6 +60,12 @@ button:hover {
 .list-item-bttns {
     background-color:slategray;
     color: white;
+    text-align: start;
+}
+
+.question-style {
+    font-size: 2rem;
+    padding: 5% 0;
 }
 
 .p-result {

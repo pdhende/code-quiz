@@ -118,8 +118,8 @@ var questionSet = [
 function setTimer() {
     timerCount = 75;
     function setTime() {
-        timerCount--;
         timeValue.textContent = timerCount;
+        timerCount--;
 
         if(timerCount <= 0) {
             clearInterval(intervalID);
@@ -231,23 +231,23 @@ function displayFinalResult() {
     });
 
     function saveScore() {
-        var quizScore = JSON.parse(sessionStorage.getItem("quizScArr")); // Get previous score from local storage
+        var quizScore = JSON.parse(localStorage.getItem("quizScArr")); // Get previous score from local storage
 
         if(quizScore === null) {
             var newQuizSc = [{
                 qName: inputEl.value,
                 qScore: score
             }];
-            sessionStorage.setItem("quizScArr", JSON.stringify(newQuizSc));
+            localStorage.setItem("quizScArr", JSON.stringify(newQuizSc));
         }
         else {
-            var prevQuizScArr = JSON.parse(sessionStorage.getItem("quizScArr")) || [];
+            var prevQuizScArr = JSON.parse(localStorage.getItem("quizScArr")) || [];
             var newQuizSc = {
                 qName: inputEl.value,
                 qScore: score
             };
             prevQuizScArr.push(newQuizSc);
-            sessionStorage.setItem("quizScArr", JSON.stringify(prevQuizScArr));
+            localStorage.setItem("quizScArr", JSON.stringify(prevQuizScArr));
         }
             window.location.href="highscores.html";
     }

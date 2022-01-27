@@ -5,7 +5,7 @@ var clearBtn = document.querySelector("#clear");
 var index = 0;
 
 // Get the player score from local storage
-var quizSc = JSON.parse(sessionStorage.getItem("quizScArr"));
+var quizSc = JSON.parse(localStorage.getItem("quizScArr"));
 if(quizSc !== null) {
     
     quizSc.forEach(function(obj) {
@@ -24,7 +24,7 @@ function showMainPage() {
 
 // Function to delete list from local storage
 function clearScore() {
-    sessionStorage.removeItem("quizScArr");
+    localStorage.removeItem("quizScArr");
     quizPlayer.innerHTML="";
 }
 
