@@ -180,7 +180,7 @@ function displayResult() {
             timeValue.textContent = timerCount;
         }
         answerListEl.innerHTML='';        
-        showResult.innerHTML='';
+        quesAnsEl.removeChild(showResult);
         questionNum++;
         if(questionNum < questionSet.length) {
             displayQuestions();
@@ -230,6 +230,7 @@ function displayFinalResult() {
         saveScore();
     });
 
+    // Function to store the scores in Local Storage
     function saveScore() {
         var quizScore = JSON.parse(localStorage.getItem("quizScArr")); // Get previous score from local storage
 
